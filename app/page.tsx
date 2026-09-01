@@ -1,4 +1,5 @@
 import { ArrowRight, BriefcaseBusiness, CheckCircle2, ChevronRight, Mail, MapPin, Phone, ShieldCheck, Sun, Wrench, Zap } from 'lucide-react';
+import { QuoteForm } from '@/components/quote-form';
 
 const whatsappUrl = 'https://wa.me/5513997171493?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento.';
 const segments = [
@@ -49,6 +50,7 @@ export default function Home() {
   return (
     <main>
       <section className="hero" id="inicio">
+        <div className="top-offer"><Zap size={14} fill="currentColor" /><strong>Projeto + orçamento solar gratuitos</strong><span>Comece em apenas um clique.</span></div>
         <header className="site-header">
           <a className="brand" href="#inicio" aria-label="Motriz Engenharia Elétrica — início"><img src="/logo-motriz.webp" alt="Motriz Engenharia Elétrica" /></a>
           <nav className="desktop-nav" aria-label="Navegação principal"><a href="#empresa">A Motriz</a><a href="#segmentos">Segmentos</a><a href="#servicos">Serviços</a><a href="#contato">Contato</a></nav>
@@ -57,13 +59,15 @@ export default function Home() {
         </header>
         <div className="hero-backdrop" aria-hidden="true" /><div className="hero-grid" aria-hidden="true" />
         <div className="hero-content">
-          <p className="eyebrow"><Zap size={15} fill="currentColor" /> Engenharia elétrica de ponta a ponta</p>
-          <h1>Energia que <span>move</span> grandes projetos.</h1>
-          <p className="hero-copy">Do planejamento à execução, soluções elétricas seguras, eficientes e sob medida para residências, edifícios, indústrias e embarcações.</p>
-          <div className="hero-actions"><a className="primary-button" href={whatsappUrl} target="_blank" rel="noreferrer">Fale com um especialista <ArrowRight size={18} /></a><a className="text-link" href="#servicos">Conheça nossas soluções</a></div>
-          <div className="hero-trust" aria-label="Diferenciais"><span><CheckCircle2 size={17} /> Responsabilidade técnica</span><span><CheckCircle2 size={17} /> Soluções personalizadas</span><span><CheckCircle2 size={17} /> Atendimento ágil</span></div>
+          <div className="hero-message">
+            <p className="eyebrow"><Zap size={15} fill="currentColor" /> Energia solar sem complicação</p>
+            <h1>Seu projeto solar, <span>grátis</span> em 1 clique.</h1>
+            <p className="hero-copy">Descubra a solução ideal para economizar na conta de luz. A Motriz prepara seu projeto e orçamento inicial sem custo.</p>
+            <div className="hero-actions"><a className="primary-button" href="#formulario-orcamento">Começar agora <ArrowRight size={18} /></a><a className="text-link" href="#servicos">Conheça nossas soluções</a></div>
+            <div className="hero-trust" aria-label="Diferenciais"><span><CheckCircle2 size={17} /> Projeto inicial gratuito</span><span><CheckCircle2 size={17} /> Sem compromisso</span><span><CheckCircle2 size={17} /> Atendimento especializado</span></div>
+          </div>
+          <div id="formulario-orcamento"><QuoteForm /></div>
         </div>
-        <div className="hero-note"><span>01</span><p>Projetos elétricos, energia solar, manutenção e automação com um único parceiro.</p></div>
       </section>
 
       <section className="about section" id="empresa">
