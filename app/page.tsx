@@ -1,7 +1,11 @@
 import { ArrowRight, BriefcaseBusiness, CheckCircle2, ChevronRight, Mail, MapPin, Phone, ShieldCheck, Sun, Wrench, Zap } from 'lucide-react';
 import { QuoteForm } from '@/components/quote-form';
 
+export const dynamic = 'force-static';
+
 const whatsappUrl = 'https://wa.me/5513997171493?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento.';
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
+const assetPath = (path: string) => `${basePath}${path}`;
 const segments = [
   { name: 'Residencial', image: '/segmento-residencial.webp', text: 'Segurança, conforto e eficiência para sua casa.' },
   { name: 'Predial', image: '/segmento-predial.webp', text: 'Infraestrutura confiável para condomínios e edifícios.' },
@@ -52,12 +56,12 @@ export default function Home() {
       <section className="hero" id="inicio">
         <div className="top-offer"><Zap size={14} fill="currentColor" /><strong>Projeto + orçamento solar gratuitos</strong><span>Comece em apenas um clique.</span></div>
         <header className="site-header">
-          <a className="brand" href="#inicio" aria-label="Motriz Engenharia Elétrica — início"><img src="/logo-motriz.webp" alt="Motriz Engenharia Elétrica" /></a>
+          <a className="brand" href="#inicio" aria-label="Motriz Engenharia Elétrica — início"><img src={assetPath('/logo-motriz.webp')} alt="Motriz Engenharia Elétrica" /></a>
           <nav className="desktop-nav" aria-label="Navegação principal"><a href="#empresa">A Motriz</a><a href="#segmentos">Segmentos</a><a href="#servicos">Serviços</a><a href="#contato">Contato</a></nav>
           <a className="header-cta" href={whatsappUrl} target="_blank" rel="noreferrer">Solicitar orçamento <ArrowRight size={16} /></a>
           <a className="menu-button" href="#contato" aria-label="Ir para contato"><Phone /></a>
         </header>
-        <div className="hero-backdrop" aria-hidden="true" /><div className="hero-grid" aria-hidden="true" />
+        <div className="hero-backdrop" style={{ backgroundImage: `url('${assetPath('/hero-motriz.webp')}')` }} aria-hidden="true" /><div className="hero-grid" aria-hidden="true" />
         <div className="hero-content">
           <div className="hero-message">
             <p className="eyebrow"><Zap size={15} fill="currentColor" /> Energia solar sem complicação</p>
@@ -80,7 +84,7 @@ export default function Home() {
 
       <section className="segments section" id="segmentos">
         <div className="section-heading"><div><p className="kicker">Onde atuamos</p><h2>Expertise para diferentes desafios.</h2></div><p>Uma equipe, múltiplos segmentos e a mesma exigência técnica em cada entrega.</p></div>
-        <div className="segment-grid">{segments.map((segment, index) => <article className="segment-card" key={segment.name}><img src={segment.image} alt={`Solução elétrica para o segmento ${segment.name.toLowerCase()}`} /><div className="segment-overlay"><span>0{index + 1}</span><div><h3>{segment.name}</h3><p>{segment.text}</p></div><ChevronRight /></div></article>)}</div>
+        <div className="segment-grid">{segments.map((segment, index) => <article className="segment-card" key={segment.name}><img src={assetPath(segment.image)} alt={`Solução elétrica para o segmento ${segment.name.toLowerCase()}`} /><div className="segment-overlay"><span>0{index + 1}</span><div><h3>{segment.name}</h3><p>{segment.text}</p></div><ChevronRight /></div></article>)}</div>
       </section>
 
       <section className="services section" id="servicos">
@@ -93,7 +97,7 @@ export default function Home() {
         <div className="showcase-grid">
           {showcases.map((item, index) => (
             <article className={`showcase-card showcase-card-${index + 1}`} key={item.title}>
-              <div className="showcase-image"><img src={item.image} alt={item.title} /></div>
+              <div className="showcase-image"><img src={assetPath(item.image)} alt={item.title} /></div>
               <div className="showcase-copy"><p className="kicker">{item.eyebrow}</p><h3>{item.title}</h3><p>{item.text}</p><a href={whatsappUrl} target="_blank" rel="noreferrer">Solicitar projeto <ArrowRight size={17} /></a></div>
             </article>
           ))}
@@ -106,16 +110,16 @@ export default function Home() {
       </section>
 
       <section className="careers section" id="trabalhe-conosco">
-        <div className="careers-image"><img src="/motriz-vaga-eletricista.png" alt="Oportunidade para eletricista na Motriz Engenharia" /></div>
+        <div className="careers-image"><img src={assetPath('/motriz-vaga-eletricista.png')} alt="Oportunidade para eletricista na Motriz Engenharia" /></div>
         <div className="careers-copy"><p className="kicker">Trabalhe conosco</p><h2>Quer crescer junto com a Motriz?</h2><p>Buscamos profissionais organizados, com boa comunicação, experiência prática e vontade de evoluir. As atividades incluem instalações e manutenções elétricas, montagem de quadros, tomadas, iluminação e apoio em serviços técnicos.</p><a className="dark-button" href={whatsappUrl} target="_blank" rel="noreferrer"><BriefcaseBusiness size={19} /> Enviar currículo pelo WhatsApp</a></div>
       </section>
 
       <section className="contact section" id="contato">
-        <div className="contact-bg" aria-hidden="true" />
+        <div className="contact-bg" style={{ backgroundImage: `linear-gradient(90deg,rgba(4,20,40,.97),rgba(4,20,40,.68)),url('${assetPath('/servico-engenharia.webp')}')` }} aria-hidden="true" />
         <div className="contact-content"><p className="kicker">Vamos tirar seu projeto do papel?</p><h2>A energia certa começa com uma boa conversa.</h2><p>Conte o que você precisa. Nossa equipe está pronta para avaliar seu projeto e indicar o melhor caminho.</p><a className="primary-button" href={whatsappUrl} target="_blank" rel="noreferrer">Solicitar orçamento no WhatsApp <ArrowRight /></a></div>
       </section>
 
-      <footer><div className="footer-main"><img src="/logo-motriz.webp" alt="Motriz Engenharia Elétrica" /><p>Soluções elétricas inteligentes, seguras e eficientes.</p><div className="footer-contact"><a href="tel:+5513997171493"><Phone /> (13) 99717-1493</a><a href="mailto:motrizelettrica@gmail.com"><Mail /> motrizelettrica@gmail.com</a><a href="https://www.instagram.com/motriz.eletrica/" target="_blank" rel="noreferrer"><span aria-hidden="true">@</span> @motriz.eletrica</a><span><MapPin /> Baixada Santista — SP</span></div></div><div className="footer-bottom"><span>© 2026 Motriz Engenharia Elétrica.</span><a href="#inicio">Voltar ao topo ↑</a></div></footer>
+      <footer><div className="footer-main"><img src={assetPath('/logo-motriz.webp')} alt="Motriz Engenharia Elétrica" /><p>Soluções elétricas inteligentes, seguras e eficientes.</p><div className="footer-contact"><a href="tel:+5513997171493"><Phone /> (13) 99717-1493</a><a href="mailto:motrizelettrica@gmail.com"><Mail /> motrizelettrica@gmail.com</a><a href="https://www.instagram.com/motriz.eletrica/" target="_blank" rel="noreferrer"><span aria-hidden="true">@</span> @motriz.eletrica</a><span><MapPin /> Baixada Santista — SP</span></div></div><div className="footer-bottom"><span>© 2026 Motriz Engenharia Elétrica.</span><a href="#inicio">Voltar ao topo ↑</a></div></footer>
 
       <a className="floating-whatsapp" href={whatsappUrl} target="_blank" rel="noreferrer" aria-label="Falar com a Motriz pelo WhatsApp"><Phone fill="currentColor" /></a>
     </main>

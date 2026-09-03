@@ -12,14 +12,20 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 });
 
+const isGitHubPages = process.env.GITHUB_PAGES === 'true';
+const socialImage = isGitHubPages ? '/motriz-site/og.png' : '/og.png';
+
 export const metadata: Metadata = {
+  metadataBase: isGitHubPages
+    ? new URL('https://motrizeletrica-engenharia.github.io')
+    : undefined,
   title: 'Motriz Engenharia Elétrica',
   description:
     'Projetos, instalações, manutenção elétrica, energia solar e automação para os segmentos residencial, predial, industrial e naval.',
   openGraph: {
     title: 'Motriz Engenharia Elétrica',
     description: 'Energia que move grandes projetos.',
-    images: [{ url: '/og.png', width: 1200, height: 630 }],
+    images: [{ url: socialImage, width: 1200, height: 630 }],
     locale: 'pt_BR',
     type: 'website',
   },
@@ -27,7 +33,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Motriz Engenharia Elétrica',
     description: 'Energia que move grandes projetos.',
-    images: ['/og.png'],
+    images: [socialImage],
   },
 };
 
