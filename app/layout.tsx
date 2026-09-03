@@ -14,6 +14,9 @@ const geistMono = Geist_Mono({
 
 const isGitHubPages = process.env.GITHUB_PAGES === 'true';
 const socialImage = isGitHubPages ? '/motriz-site/og.png' : '/og.png';
+const favicon = isGitHubPages
+  ? '/motriz-site/favicon-motriz.png'
+  : '/favicon-motriz.png';
 
 export const metadata: Metadata = {
   metadataBase: isGitHubPages
@@ -22,6 +25,11 @@ export const metadata: Metadata = {
   title: 'Motriz Engenharia Elétrica',
   description:
     'Projetos, instalações, manutenção elétrica, energia solar e automação para os segmentos residencial, predial, industrial e naval.',
+  icons: {
+    icon: [{ url: favicon, type: 'image/png' }],
+    shortcut: favicon,
+    apple: favicon,
+  },
   openGraph: {
     title: 'Motriz Engenharia Elétrica',
     description: 'Energia que move grandes projetos.',
