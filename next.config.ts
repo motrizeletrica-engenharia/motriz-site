@@ -1,12 +1,13 @@
 import type { NextConfig } from 'next';
 
 const isGitHubPages = process.env.GITHUB_PAGES === 'true';
+const isStaticExport = process.env.STATIC_EXPORT === 'true';
 
 const nextConfig: NextConfig = {
-  ...(isGitHubPages
+  ...(isGitHubPages || isStaticExport
     ? {
         output: 'export',
-        assetPrefix: '/motriz-site',
+        ...(isGitHubPages ? { assetPrefix: '/motriz-site' } : {}),
       }
     : {}),
 };
